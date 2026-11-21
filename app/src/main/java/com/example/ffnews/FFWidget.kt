@@ -50,6 +50,7 @@ class FFWidget : GlanceAppWidget() {
 
 @Composable
 private fun WidgetContent(list: List<Ev>, updated: String) {
+    val context = androidx.glance.LocalContext.current
     val white = ColorProvider(Color.White)
     val gray = ColorProvider(Color(0xFFB0B0B0))
     Column(
@@ -57,7 +58,7 @@ private fun WidgetContent(list: List<Ev>, updated: String) {
             .background(ColorProvider(Color(0xE6121212)))
             .cornerRadius(16.dp)
             .padding(10.dp)
-            .clickable(actionStartActivity(MainActivity::class.java))
+            .clickable(actionStartActivity(android.content.Intent(context, MainActivity::class.java)))
     ) {
         Row(GlanceModifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Text("FF News", style = TextStyle(color = white, fontWeight = FontWeight.Bold, fontSize = 14.sp))
